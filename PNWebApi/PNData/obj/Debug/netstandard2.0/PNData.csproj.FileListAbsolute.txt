@@ -1,0 +1,14 @@
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNData\bin\Debug\netstandard2.0\PNData.deps.json
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNData\bin\Debug\netstandard2.0\PNData.dll
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNData\obj\Debug\netstandard2.0\PNData.AssemblyInfoInputs.cache
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNData\obj\Debug\netstandard2.0\PNData.AssemblyInfo.cs
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNData\bin\Debug\netstandard2.0\Microsoft.Azure.Cosmos.ServiceInterop.dll
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNData\bin\Debug\netstandard2.0\Cosmos.CRTCompat.dll
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNData\bin\Debug\netstandard2.0\PNData.pdb
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNData\bin\Debug\netstandard2.0\PNEntities.dll
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNData\bin\Debug\netstandard2.0\PNEntities.pdb
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNData\obj\Debug\netstandard2.0\PNData.csprojAssemblyReference.cache
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNData\obj\Debug\netstandard2.0\PNData.csproj.CoreCompileInputs.cache
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNData\obj\Debug\netstandard2.0\PNData.csproj.CopyComplete
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNData\obj\Debug\netstandard2.0\PNData.dll
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNData\obj\Debug\netstandard2.0\PNData.pdb

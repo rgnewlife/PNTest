@@ -1,0 +1,5 @@
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\bin\Debug\netstandard2.0\PNServices.deps.json
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\bin\Debug\netstandard2.0\PNServices.dll
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\obj\Debug\netstandard2.0\PNServices.csprojAssemblyReference.cache
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\obj\Debug\netstandard2.0\PNServices.AssemblyInfoInputs.cache
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\obj\Debug\netstandard2.0\PNServices.AssemblyInfo.cs

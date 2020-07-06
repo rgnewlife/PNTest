@@ -1,0 +1,268 @@
+﻿<h3>Prayer Group List</h3>
+
+@page "/prayergrouplist"
+
+@using System.Collections.Generic
+@using System.Text
+@using System.Linq
+
+@using Microsoft.JSInterop
+
+@using Newtonsoft.Json
+
+@using PNEntities
+
+@inject IJSRuntime JSRuntime
+@inject HttpClient Http
+
+<br />
+
+<div id="divAddButton">
+    <div class="row">
+        <div class="col-sm-1">
+            <button id="btnAdd" class="btn btn-info" @onclick="Add_OnClick">Add</button>
+        </div>
+    </div>
+</div>
+
+<div id="divAddInputs" style="display:none;">
+    <div class="row">
+        <div class="col-sm-1">
+            <table width="200px">
+                <tr><td>Name: </td><td><input id="txt_prayerGroupName" @bind="UpdateName" /></td></tr>
+                <tr><td>Description: </td><td><input id="txt_prayerGroupDescription" @bind="UpdateDescription" /></td></tr>
+                <tr>
+                    <td><button id="btnAddOK" class="btn btn-info" @onclick="AddOK_OnClick">OK</button></td>
+                    <td><button id="btnAddCancel" class="btn btn-primary" @onclick="()=> AddCancel_OnClick()">Cancel</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<br />
+
+@if (PrayerGroups == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Prayer Group Name</th>
+                <th>Prayer Group Description</th>
+                <th>Date Created</th>
+                <th>Date Modified</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (PrayerGroup prayerGroup in PrayerGroups)
+            {
+                <tr>
+                    <td>
+                        <span id="spnName_@prayerGroup.Id">@prayerGroup.PrayerGroupName</span>
+                        <input id="txtInputName_@prayerGroup.Id" style="display:none;" @bind="UpdateName">
+                    </td>
+                    <td>
+                        <span id="spnDescription_@prayerGroup.Id">@prayerGroup.PrayerGroupDescription</span>
+                        <input id="txtInputDescription_@prayerGroup.Id" style="display:none;" @bind="UpdateDescription">
+                    </td>
+                    <td>
+                        <span id="spnDateCreated_@prayerGroup.Id">@prayerGroup.DateCreated.ToShortDateString()</span>
+                    </td>
+                    <td>
+                        <span id="spnDateModified_@prayerGroup.Id">@prayerGroup.DateLastModified.ToShortDateString()</span>
+                    </td>
+                    <td>
+                        <button id="btnEdit_@prayerGroup.Id" class="btn btn-primary" @onclick="()=> Edit_OnClick(prayerGroup.Id)">Edit</button>
+                        <button id="btnUpdate_@prayerGroup.Id" style="display:none;" class="btn btn-success" @onclick="()=> Update_OnClick(prayerGroup.Id)">Update</button>
+                        <button id="btnEditCancel_@prayerGroup.Id" class="btn btn-secondary" style="display:none;" @onclick="()=> EditCancel_OnClick(prayerGroup.Id)">Cancel</button>
+                    </td>
+                    <td><button id="btnDelete_@prayerGroup.Id" class="btn btn-danger" @onclick="()=> Delete(prayerGroup.Id)">Delete</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+
+@code {
+
+    private List<PrayerGroup> PrayerGroups;
+    private PrayerGroup activePrayerGroup = new PrayerGroup();
+
+    private string exceptionMessage;
+
+    private string UpdateName = "";
+    private string UpdateDescription = "";
+
+    #region Page Events
+
+    protected override async Task OnInitializedAsync()
+    {
+        PrayerGroups = await GetAllPrayerGroupsAsync();
+    }
+
+    #endregion
+
+    #region UI Events
+
+    #region Add Events
+
+    private async Task Add_OnClick()
+    {
+        await JSRuntime.InvokeVoidAsync(
+            "window.domMethods.showAddInputs", true);
+    }
+
+    private async Task AddCancel_OnClick()
+    {
+        await JSRuntime.InvokeVoidAsync(
+            "window.domMethods.showAddInputs", false);
+    }
+
+    private async Task AddOK_OnClick()
+    {
+        await JSRuntime.InvokeVoidAsync(
+            "window.domMethods.showAddInputs", false);
+
+        activePrayerGroup = await AddNewPrayerGroupAsync();
+
+        PrayerGroups.Add(activePrayerGroup);
+        PrayerGroups = PrayerGroups.OrderBy(pg => pg.PrayerGroupName).ToList();
+
+        UpdateName = "";
+        UpdateDescription = "";
+
+        StateHasChanged();
+    }
+
+    #endregion
+
+    #region Update Events
+
+    private async Task Edit_OnClick(Guid Id)
+    {
+        activePrayerGroup = PrayerGroups.FirstOrDefault(p => p.Id == Id);
+
+        await JSRuntime.InvokeVoidAsync(
+       "window.domMethods.showUpdateInputs", Id.ToString(), activePrayerGroup.PrayerGroupName, activePrayerGroup.PrayerGroupDescription, true);
+    }
+
+    private async Task EditCancel_OnClick(Guid Id)
+    {
+        await JSRuntime.InvokeVoidAsync(
+            "window.domMethods.showUpdateInputs", Id.ToString(), "", "", false);
+    }
+
+    private async Task Update_OnClick(Guid Id)
+    {
+        await JSRuntime.InvokeVoidAsync(
+            "window.domMethods.showUpdateInputs", Id.ToString(), "", "", false);
+
+        activePrayerGroup = await UpdatePrayerGroupAsync(Id);
+
+        UpdateName = "";
+        UpdateDescription = "";
+
+        StateHasChanged();
+    }
+
+    #endregion
+
+    #region Delete Events
+
+    private async Task Delete(Guid Id)
+    {
+        activePrayerGroup = PrayerGroups.FirstOrDefault(p => p.Id == Id);
+
+        await DeletePrayerGroupAsync(Id);
+
+        PrayerGroups.Remove(activePrayerGroup);
+        activePrayerGroup = new PrayerGroup();
+
+        StateHasChanged();
+    }
+
+    #endregion
+
+    #endregion
+
+    #region Http Events
+
+    private async Task<List<PrayerGroup>> GetAllPrayerGroupsAsync()
+    {
+        var response = await Http.GetAsync("PrayerGroup");
+
+        string content = await response.Content.ReadAsStringAsync();
+
+        List<PrayerGroup> prayerGroups = JsonConvert.DeserializeObject<List<PrayerGroup>>(content);
+        return prayerGroups;
+    }
+
+    private async Task<PrayerGroup> AddNewPrayerGroupAsync()
+    {
+        var prayerGroup = new PrayerGroup
+        {
+            Id = Guid.NewGuid(),
+            PrayerGroupName = UpdateName,
+            PrayerGroupDescription = UpdateDescription,
+            DateCreated = DateTime.UtcNow,
+            DateLastModified = DateTime.UtcNow
+        };
+
+        var stringContent = new StringContent(JsonConvert.SerializeObject(prayerGroup), Encoding.UTF8, "application/json");
+
+        var response = await Http.PostAsync("PrayerGroup", stringContent);
+
+        string content = await response.Content.ReadAsStringAsync();
+        return JsonConvert.DeserializeObject<PrayerGroup>(content);
+    }
+
+
+    private async Task<PrayerGroup> UpdatePrayerGroupAsync(Guid Id)
+    {
+        var prayerGroup = PrayerGroups.FirstOrDefault(p => p.Id == Id);
+
+        // TODO: Explore more about binding.  
+        // The code below is required because the current implementation does
+        // not update the bound field if the user does not modify the existing entry.
+        if (UpdateName.Length == 0)
+        {
+            UpdateName = prayerGroup.PrayerGroupName;
+        }
+        if (UpdateDescription.Length == 0)
+        {
+            UpdateDescription = prayerGroup.PrayerGroupDescription;
+        }
+
+        prayerGroup.PrayerGroupName = UpdateName;
+        prayerGroup.PrayerGroupDescription = UpdateDescription;
+        prayerGroup.DateLastModified = DateTime.UtcNow;
+
+        var stringContent = new StringContent(JsonConvert.SerializeObject(prayerGroup), Encoding.UTF8, "application/json");
+
+        var response = await Http.PutAsync("PrayerGroup", stringContent);
+
+        string content = await response.Content.ReadAsStringAsync();
+        return JsonConvert.DeserializeObject<PrayerGroup>(content);
+
+    }
+
+
+    // TODO:  Fix WebApi Code to return a bool
+    private async Task<PrayerGroup> DeletePrayerGroupAsync(Guid Id)
+    {
+        var route = "PrayerGroup/" + Id;
+        var response = await Http.DeleteAsync(route);
+        return null;
+    }
+
+    #endregion
+}

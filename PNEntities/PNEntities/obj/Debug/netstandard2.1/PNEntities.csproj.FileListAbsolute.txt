@@ -1,0 +1,9 @@
+C:\Users\Robert\source\repos\PNTest\PNEntities\PNEntities\bin\Debug\netstandard2.1\PNEntities.deps.json
+C:\Users\Robert\source\repos\PNTest\PNEntities\PNEntities\bin\Debug\netstandard2.1\PNEntities.dll
+C:\Users\Robert\source\repos\PNTest\PNEntities\PNEntities\bin\Debug\netstandard2.1\PNEntities.pdb
+C:\Users\Robert\source\repos\PNTest\PNEntities\PNEntities\obj\Debug\netstandard2.1\PNEntities.csprojAssemblyReference.cache
+C:\Users\Robert\source\repos\PNTest\PNEntities\PNEntities\obj\Debug\netstandard2.1\PNEntities.AssemblyInfoInputs.cache
+C:\Users\Robert\source\repos\PNTest\PNEntities\PNEntities\obj\Debug\netstandard2.1\PNEntities.AssemblyInfo.cs
+C:\Users\Robert\source\repos\PNTest\PNEntities\PNEntities\obj\Debug\netstandard2.1\PNEntities.csproj.CoreCompileInputs.cache
+C:\Users\Robert\source\repos\PNTest\PNEntities\PNEntities\obj\Debug\netstandard2.1\PNEntities.dll
+C:\Users\Robert\source\repos\PNTest\PNEntities\PNEntities\obj\Debug\netstandard2.1\PNEntities.pdb

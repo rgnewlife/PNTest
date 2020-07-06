@@ -1,0 +1,16 @@
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\bin\Debug\netcoreapp3.1\Microsoft.Azure.Cosmos.ServiceInterop.dll
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\bin\Debug\netcoreapp3.1\Cosmos.CRTCompat.dll
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\bin\Debug\netcoreapp3.1\PNServices.deps.json
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\bin\Debug\netcoreapp3.1\PNServices.dll
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\bin\Debug\netcoreapp3.1\PNServices.pdb
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\bin\Debug\netcoreapp3.1\PNData.dll
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\bin\Debug\netcoreapp3.1\PNEntities.dll
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\bin\Debug\netcoreapp3.1\PNData.pdb
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\bin\Debug\netcoreapp3.1\PNEntities.pdb
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\obj\Debug\netcoreapp3.1\PNServices.csprojAssemblyReference.cache
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\obj\Debug\netcoreapp3.1\PNServices.AssemblyInfoInputs.cache
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\obj\Debug\netcoreapp3.1\PNServices.AssemblyInfo.cs
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\obj\Debug\netcoreapp3.1\PNServices.csproj.CoreCompileInputs.cache
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\obj\Debug\netcoreapp3.1\PNServices.csproj.CopyComplete
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\obj\Debug\netcoreapp3.1\PNServices.dll
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNServices\obj\Debug\netcoreapp3.1\PNServices.pdb

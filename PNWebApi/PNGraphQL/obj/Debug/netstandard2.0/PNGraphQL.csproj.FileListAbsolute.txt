@@ -1,0 +1,4 @@
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNGraphQL\bin\Debug\netstandard2.0\PNGraphQL.deps.json
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNGraphQL\bin\Debug\netstandard2.0\PNGraphQL.dll
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNGraphQL\obj\Debug\netstandard2.0\PNGraphQL.AssemblyInfoInputs.cache
+C:\Users\Robert\source\repos\PNTest\PNWebApi\PNGraphQL\obj\Debug\netstandard2.0\PNGraphQL.AssemblyInfo.cs
